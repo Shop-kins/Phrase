@@ -1,4 +1,4 @@
-name             'docker_swarm'
+name             'docker'
 maintainer       'shop-kins'
 license          'All rights reserved'
 description      'sets up the docker swarm'

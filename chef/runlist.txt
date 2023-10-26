@@ -1,1 +1,1 @@
-initial_install
+initial_install docker
