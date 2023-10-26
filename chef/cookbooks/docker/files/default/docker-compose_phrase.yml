@@ -9,10 +9,7 @@ services:
       replicas: 2
     environment:
       - APP_PORT=5001
-      - REDIS_HOST=redis-localhost
+      - REDIS_HOST=redis
 
-  redis_db:
+  redis:
     image: redis:alpine
-    hostname: redis-localhost
-    ports:
-      - "3679:3679"
