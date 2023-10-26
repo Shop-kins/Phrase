@@ -5,3 +5,11 @@ terraform {
       region = "eu-west-3"
     }
 }
+
+provider "aws" {
+  region = "eu-west-3"
+}
+
+module chef {
+  source = "./modules/chef_cookbooks"
+}

@@ -1,0 +1,5 @@
+name             'initial_install'
+maintainer       'shop-kins'
+license          'All rights reserved'
+description      'Installs/Configures things'
+version          '0.1.0'
