@@ -17,6 +17,15 @@ resource "aws_security_group_rule" "inbound_ssh" {
   cidr_blocks = [ "0.0.0.0/0" ]
 }
 
+resource "aws_security_group_rule" "inbound_https" {
+  from_port = 443
+  protocol = "TCP"
+  security_group_id = aws_security_group.phrase_sg.id
+  to_port = 443
+  type = "ingress"
+  cidr_blocks = [ "0.0.0.0/0" ]
+}
+
 resource "aws_security_group_rule" "allow_all_outbound" {
   from_port = 0
   protocol = -1

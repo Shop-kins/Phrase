@@ -12,7 +12,7 @@ context = {'start_time': datetime.now()}
 
 app_host = getenv('APP_HOST', '0.0.0.0')
 app_port = int(getenv('APP_PORT', 5000))
-redis_host = getenv('REDIS_HOST', 'redis')
+redis_host = getenv('REDIS_HOST', 'redis://redis_db')
 redis_port = int(getenv('REDIS_PORT', 6379))
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////tmp/test.db'
 # app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+pymysql://user:password@host:3306/db_name'

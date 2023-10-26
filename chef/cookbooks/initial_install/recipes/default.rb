@@ -4,3 +4,15 @@ execute "jq_install" do
   action :run
   not_if 'command -v jq'
 end
+
+execute "docker_install" do
+  command "sudo yum install -y docker"
+  action :run
+  not_if 'command -v docker'
+  notifies :run, 'docker_start', :delayed
+end
+
+execute "docker_start" do
+  command "sudo systemctl start docker"
+  action :nothing
+end

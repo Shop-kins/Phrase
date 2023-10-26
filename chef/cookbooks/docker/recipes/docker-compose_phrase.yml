@@ -1,0 +1,12 @@
+services:
+  app1:
+    image: 127.0.0.1:5000/phrase
+    build: .
+    ports:
+      - "5000:5000"
+    replicas: 2
+    links:
+      - redis_db
+
+  redis_db:
+    image: redis:alpine
