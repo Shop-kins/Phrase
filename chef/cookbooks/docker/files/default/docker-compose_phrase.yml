@@ -1,0 +1,19 @@
+version: "3.8"
+services:
+  app1:
+    image: 127.0.0.1:5000/phrase
+    build: .
+    ports:
+      - "5001:5001"
+    deploy:
+      replicas: 2
+    links:
+      - redis_db
+    environment:
+      - APP_PORT=5001
+      - REDIS_HOST=redis://redis_db
+
+  redis_db:
+    image: redis:alpine
+    ports:
+      - "3679:3679"

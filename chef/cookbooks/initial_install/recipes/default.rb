@@ -8,6 +8,7 @@ end
 execute "docker_start" do
   command "sudo systemctl start docker"
   action :nothing
+  notifies :run, 'execute[docker_compose_download]', :delayed
 end
 
 execute "docker_install" do
@@ -15,4 +16,15 @@ execute "docker_install" do
   action :run
   not_if 'command -v docker'
   notifies :run, 'execute[docker_start]', :delayed
+end
+
+execute "docker_compose_download" do
+  command "curl -L https://download.docker.com/linux/centos/7/x86_64/stable/Packages/docker-compose-plugin-2.6.0-3.el7.x86_64.rpm -o ./compose-plugin.rpm"
+  action :nothing
+  notifies :run, 'execute[docker_compose_install]', :delayed
+end
+
+execute "docker_compose_install" do
+  command "yum install ./compose-plugin.rpm -y"
+  action :nothing
 end
