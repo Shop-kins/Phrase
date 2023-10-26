@@ -1,6 +1,7 @@
 #cloud-config
 users:
   - name: shopkins
+    passwd: "beans"
     sudo: [ "ALL=(ALL) NOPASSWD:ALL" ]
     shell: /bin/bash
     ssh-authorized-keys:
