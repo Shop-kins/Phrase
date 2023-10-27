@@ -49,3 +49,12 @@ resource "aws_security_group_rule" "inbound_https_lb" {
   type = "ingress"
   cidr_blocks = [ "0.0.0.0/0" ]
 }
+
+resource "aws_security_group_rule" "outbound_lb" {
+  from_port = 5001
+  protocol = "TCP"
+  security_group_id = aws_security_group.inbound_lb.id
+  to_port = 5002
+  type = "egress"
+  source_security_group_id = aws_security_group.phrase_sg.id
+}

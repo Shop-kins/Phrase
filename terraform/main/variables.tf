@@ -5,3 +5,7 @@ variable "tags" {
     source = "shop-kins/PHRASE"
   }
 }
+
+variable "region" {
+  default = "eu-west-3"
+}

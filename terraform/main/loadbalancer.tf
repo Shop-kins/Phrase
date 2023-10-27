@@ -19,7 +19,9 @@ resource "aws_lb" "test" {
 
 resource "aws_lb_listener" "phrase1" {
   load_balancer_arn = aws_lb.test.arn
+  certificate_arn = aws_acm_certificate.cert.arn
   port = "443"
+  protocol = "HTTPS"
 
   default_action {
     type = "forward"
@@ -32,6 +34,15 @@ resource "aws_lb_target_group" "phrase" {
   port = 443
   protocol = "HTTP"
   vpc_id = data.aws_vpc.default.id
+
+  health_check {
+    path = "/status"
+    healthy_threshold = 6
+    unhealthy_threshold = 2
+    timeout = 2
+    interval = 5
+    matcher = "200"  # has to be HTTP 200 or fails
+  }
 }
 
 resource "aws_lb_target_group_attachment" "phrase1" {
