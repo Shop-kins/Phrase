@@ -12,4 +12,5 @@ provider "aws" {
 
 module chef {
   source = "./modules/chef_cookbooks"
+  bucket_name = var.bucket_name
 }

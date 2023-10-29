@@ -9,3 +9,7 @@ variable "tags" {
 variable "region" {
   default = "eu-west-3"
 }
+
+variable "bucket_name" {
+  default = "shop-kins-chef-bucket"
+}
