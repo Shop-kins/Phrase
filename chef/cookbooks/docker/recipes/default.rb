@@ -5,7 +5,7 @@ check_docker_swarm = `docker info --format '{{.Swarm.ControlAvailable}}'`
 execute "docker_swarm" do
   command "docker swarm init"
   action :run
-  not_if { check_docker_swarm != 'true' }
+  not_if { check_docker_swarm == 'true' }
   notifies :run, 'execute[docker_registry]', :delayed
 end
 
