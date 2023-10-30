@@ -17,6 +17,22 @@ resource "aws_lb" "test" {
   tags = var.tags
 }
 
+resource "aws_lb_listener" "phrase2" {
+  load_balancer_arn = aws_lb.test.arn
+  port = "80"
+  protocol = "HTTP"
+
+  default_action {
+    type = "redirect"
+
+    redirect {
+      port        = "443"
+      protocol    = "HTTPS"
+      status_code = "HTTP_301"
+    }
+  }
+}
+
 resource "aws_lb_listener" "phrase1" {
   load_balancer_arn = aws_lb.test.arn
   certificate_arn = aws_acm_certificate.cert.arn

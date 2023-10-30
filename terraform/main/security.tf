@@ -50,6 +50,15 @@ resource "aws_security_group_rule" "inbound_https_lb" {
   cidr_blocks = [ "0.0.0.0/0" ]
 }
 
+resource "aws_security_group_rule" "inbound_http_lb" {
+  from_port = 80
+  protocol = "TCP"
+  security_group_id = aws_security_group.inbound_lb.id
+  to_port = 80
+  type = "ingress"
+  cidr_blocks = [ "0.0.0.0/0" ]
+}
+
 resource "aws_security_group_rule" "outbound_lb" {
   from_port = 5001
   protocol = "TCP"
